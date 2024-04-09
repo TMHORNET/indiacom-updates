@@ -1,0 +1,152 @@
+2024-03-15T05:50:10+00:00 CRITICAL Uncaught wfViewNotFoundException: The view /Applications/MAMP/htdocs/wordpress/wp-content/plugins/wordfence/views/common/modal-prompt.php does not exist or is not readable. in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/wordfence/lib/wfView.php:52
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/wordfence/lib/wordfenceClass.php(6244): wfView->render()
+#1 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/wordfence/lib/wordfenceClass.php(6170): wordfence::setupAdminVars()
+#2 /Applications/MAMP/htdocs/wordpress/wp-includes/class-wp-hook.php(324): wordfence::admin_init('')
+#3 /Applications/MAMP/htdocs/wordpress/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#4 /Applications/MAMP/htdocs/wordpress/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#5 /Applications/MAMP/htdocs/wordpress/wp-admin/admin-ajax.php(45): do_action('admin_init')
+#6 {main}
+  thrown in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/wordfence/lib/wfView.php on line 52
+
+2024-03-15T09:43:30+00:00 CRITICAL syntax error, unexpected ')' in /Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/functions.php on line 197
+
+2024-03-17T19:16:08+00:00 CRITICAL syntax error, unexpected '}', expecting ';' or ',' in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 29
+
+2024-03-17T19:17:28+00:00 CRITICAL syntax error, unexpected '}', expecting ';' or ',' in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 29
+
+2024-03-17T19:27:23+00:00 CRITICAL syntax error, unexpected 'else' (T_ELSE), expecting end of file in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 34
+
+2024-03-17T19:27:37+00:00 CRITICAL syntax error, unexpected 'else' (T_ELSE), expecting end of file in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 34
+
+2024-03-17T19:28:58+00:00 CRITICAL syntax error, unexpected 'else' (T_ELSE), expecting end of file in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 34
+
+2024-03-26T15:45:02+00:00 CRITICAL Uncaught Error: Call to a member function prepare() on null in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code:30
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100): eval()
+#1 /Applications/MAMP/htdocs/wordpress/wp-includes/shortcodes.php(433): xyz_ips_display_content(Array, '', 'xyz-ips')
+#2 [internal function]: do_shortcode_tag(Array)
+#3 /Applications/MAMP/htdocs/wordpress/wp-includes/shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(xyz\\-i...', 'do_shortcode_ta...', '[xyz-ips snippe...')
+#4 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/elementor/includes/widgets/shortcode.php(133): do_shortcode('[xyz-ips snippe...')
+#5 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/elementor/includes/base/controls-stack.php(2297): Elementor\Widget_Shortcode->render()
+#6 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/elementor/includes/base/widget-bas in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 30
+
+2024-03-26T15:45:09+00:00 CRITICAL Uncaught Error: Call to a member function prepare() on null in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code:30
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100): eval()
+#1 /Applications/MAMP/htdocs/wordpress/wp-includes/shortcodes.php(433): xyz_ips_display_content(Array, '', 'xyz-ips')
+#2 [internal function]: do_shortcode_tag(Array)
+#3 /Applications/MAMP/htdocs/wordpress/wp-includes/shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(xyz\\-i...', 'do_shortcode_ta...', '[xyz-ips snippe...')
+#4 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/elementor/includes/widgets/shortcode.php(133): do_shortcode('[xyz-ips snippe...')
+#5 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/elementor/includes/base/controls-stack.php(2297): Elementor\Widget_Shortcode->render()
+#6 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/elementor/includes/base/widget-bas in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 30
+
+2024-03-26T15:45:20+00:00 CRITICAL Uncaught Error: Call to a member function prepare() on null in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code:30
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100): eval()
+#1 /Applications/MAMP/htdocs/wordpress/wp-includes/shortcodes.php(433): xyz_ips_display_content(Array, '', 'xyz-ips')
+#2 [internal function]: do_shortcode_tag(Array)
+#3 /Applications/MAMP/htdocs/wordpress/wp-includes/shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(xyz\\-i...', 'do_shortcode_ta...', '[xyz-ips snippe...')
+#4 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/elementor/includes/widgets/shortcode.php(133): do_shortcode('[xyz-ips snippe...')
+#5 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/elementor/includes/base/controls-stack.php(2297): Elementor\Widget_Shortcode->render()
+#6 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/elementor/includes/base/widget-bas in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 30
+
+2024-03-26T15:48:56+00:00 CRITICAL Uncaught Error: Call to a member function prepare() on null in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code:30
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100): eval()
+#1 /Applications/MAMP/htdocs/wordpress/wp-includes/shortcodes.php(433): xyz_ips_display_content(Array, '', 'xyz-ips')
+#2 [internal function]: do_shortcode_tag(Array)
+#3 /Applications/MAMP/htdocs/wordpress/wp-includes/shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(xyz\\-i...', 'do_shortcode_ta...', '[xyz-ips snippe...')
+#4 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/elementor/includes/widgets/shortcode.php(133): do_shortcode('[xyz-ips snippe...')
+#5 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/elementor/includes/base/controls-stack.php(2297): Elementor\Widget_Shortcode->render()
+#6 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/elementor/includes/base/widget-bas in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 30
+
+2024-03-26T15:49:35+00:00 CRITICAL Uncaught Error: Call to a member function prepare() on null in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code:30
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100): eval()
+#1 /Applications/MAMP/htdocs/wordpress/wp-includes/shortcodes.php(433): xyz_ips_display_content(Array, '', 'xyz-ips')
+#2 [internal function]: do_shortcode_tag(Array)
+#3 /Applications/MAMP/htdocs/wordpress/wp-includes/shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(xyz\\-i...', 'do_shortcode_ta...', '[xyz-ips snippe...')
+#4 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/elementor/includes/widgets/shortcode.php(133): do_shortcode('[xyz-ips snippe...')
+#5 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/elementor/includes/base/controls-stack.php(2297): Elementor\Widget_Shortcode->render()
+#6 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/elementor/includes/base/widget-bas in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 30
+
+2024-03-26T16:02:31+00:00 CRITICAL syntax error, unexpected ';', expecting ']' in /Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/functions.php on line 195
+
+2024-03-26T16:03:37+00:00 CRITICAL syntax error, unexpected ';', expecting ']' in /Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/functions.php on line 195
+
+2024-03-26T16:28:27+00:00 CRITICAL Uncaught Error: Call to a member function prepare() on null in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code:30
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100): eval()
+#1 /Applications/MAMP/htdocs/wordpress/wp-includes/shortcodes.php(433): xyz_ips_display_content(Array, '', 'xyz-ips')
+#2 [internal function]: do_shortcode_tag(Array)
+#3 /Applications/MAMP/htdocs/wordpress/wp-includes/shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(xyz\\-i...', 'do_shortcode_ta...', '[xyz-ips snippe...')
+#4 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/elementor/includes/widgets/shortcode.php(133): do_shortcode('[xyz-ips snippe...')
+#5 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/elementor/includes/base/controls-stack.php(2297): Elementor\Widget_Shortcode->render()
+#6 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/elementor/includes/base/widget-bas in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 30
+
+2024-03-26T16:43:22+00:00 CRITICAL require_once(): Failed opening required 'wp-load.php' (include_path='.:/Applications/MAMP/bin/php/php7.4.33/lib/php') in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 4
+
+2024-04-02T14:32:09+00:00 CRITICAL syntax error, unexpected ''review_result'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/functions.php on line 270
+
+2024-04-02T15:46:12+00:00 CRITICAL require_once(): Failed opening required 'wp-load.php' (include_path='.:/Applications/MAMP/bin/php/php7.4.33/lib/php') in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 4
+
+2024-04-02T16:53:14+00:00 CRITICAL syntax error, unexpected ',' in /Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/functions.php on line 217
+
+2024-04-02T18:41:47+00:00 CRITICAL syntax error, unexpected '}', expecting ';' or ',' in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 16
+
+2024-04-02T18:41:48+00:00 CRITICAL syntax error, unexpected '}', expecting ';' or ',' in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 16
+
+2024-04-02T18:41:54+00:00 CRITICAL syntax error, unexpected '}', expecting ';' or ',' in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 16
+
+2024-04-02T18:42:08+00:00 CRITICAL syntax error, unexpected '}', expecting ';' or ',' in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 16
+
+2024-04-02T18:42:51+00:00 CRITICAL syntax error, unexpected '}', expecting ';' or ',' in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 16
+
+2024-04-02T18:43:21+00:00 CRITICAL syntax error, unexpected '}', expecting ';' or ',' in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 16
+
+2024-04-02T18:43:31+00:00 CRITICAL syntax error, unexpected '}', expecting ';' or ',' in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 16
+
+2024-04-02T18:43:38+00:00 CRITICAL syntax error, unexpected '}', expecting ';' or ',' in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 16
+
+2024-04-02T18:44:59+00:00 CRITICAL syntax error, unexpected '}', expecting ';' or ',' in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 16
+
+2024-04-03T19:38:20+00:00 CRITICAL Uncaught Error: Call to a member function add_response_data() on null in /Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/functions.php:247
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-includes/class-wp-hook.php(324): {closure}(Object(ElementorPro\Modules\Forms\Classes\Form_Record), Object(ElementorPro\Modules\Forms\Classes\Ajax_Handler))
+#1 /Applications/MAMP/htdocs/wordpress/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#2 /Applications/MAMP/htdocs/wordpress/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#3 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/elementor-pro/modules/forms/classes/ajax-handler.php(209): do_action('elementor_pro/f...', Object(ElementorPro\Modules\Forms\Classes\Form_Record), Object(ElementorPro\Modules\Forms\Classes\Ajax_Handler))
+#4 /Applications/MAMP/htdocs/wordpress/wp-includes/class-wp-hook.php(324): ElementorPro\Modules\Forms\Classes\Ajax_Handler->ajax_send_form('')
+#5 /Applications/MAMP/htdocs/wordpress/wp-includes/c in /Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/functions.php on line 247
+
+2024-04-03T19:54:33+00:00 CRITICAL Uncaught Error: Call to a member function add_response_data() on null in /Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/functions.php:243
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-includes/class-wp-hook.php(324): {closure}(Object(ElementorPro\Modules\Forms\Classes\Form_Record), Object(ElementorPro\Modules\Forms\Classes\Ajax_Handler))
+#1 /Applications/MAMP/htdocs/wordpress/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#2 /Applications/MAMP/htdocs/wordpress/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#3 /Applications/MAMP/htdocs/wordpress/wp-content/plugins/elementor-pro/modules/forms/classes/ajax-handler.php(209): do_action('elementor_pro/f...', Object(ElementorPro\Modules\Forms\Classes\Form_Record), Object(ElementorPro\Modules\Forms\Classes\Ajax_Handler))
+#4 /Applications/MAMP/htdocs/wordpress/wp-includes/class-wp-hook.php(324): ElementorPro\Modules\Forms\Classes\Ajax_Handler->ajax_send_form('')
+#5 /Applications/MAMP/htdocs/wordpress/wp-includes/c in /Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/functions.php on line 243
+
+2024-04-04T09:53:27+00:00 CRITICAL syntax error, unexpected 'elseif' (T_ELSEIF), expecting end of file in /Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/functions.php on line 235
+
+2024-04-05T12:05:14+00:00 CRITICAL require_once(): Failed opening required '/Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/dynamic-tags/dynamic-tag-paper-id.php' (include_path='.:/Applications/MAMP/bin/php/php7.4.33/lib/php') in /Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/functions.php on line 301
+
+2024-04-05T12:05:30+00:00 CRITICAL require_once(): Failed opening required '/Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/dynamic-tags/dynamic-tag-paper-id.php' (include_path='.:/Applications/MAMP/bin/php/php7.4.33/lib/php') in /Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/functions.php on line 301
+
+2024-04-05T12:06:44+00:00 CRITICAL require_once(): Failed opening required '/Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/dynamic-tags/dynamic-tag-paper-id.php' (include_path='.:/Applications/MAMP/bin/php/php7.4.33/lib/php') in /Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/functions.php on line 301
+
+2024-04-05T12:13:58+00:00 CRITICAL require_once(): Failed opening required '/Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/dynamic-tags/dynamic-tag-paper-id.php' (include_path='.:/Applications/MAMP/bin/php/php7.4.33/lib/php') in /Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/functions.php on line 301
+
+2024-04-05T12:14:00+00:00 CRITICAL require_once(): Failed opening required '/Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/dynamic-tags/dynamic-tag-paper-id.php' (include_path='.:/Applications/MAMP/bin/php/php7.4.33/lib/php') in /Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/functions.php on line 301
+
+2024-04-06T10:23:33+00:00 CRITICAL Uncaught Error: Call to undefined method WP_Error::get_data() in /Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/inc/compatibility/class-astra-elementor.php:363
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-includes/class-wp-hook.php(324): Elementor\Astra_Elementor->elementor_add_theme_colors(Object(WP_Error), Array, Object(WP_REST_Request))
+#1 /Applications/MAMP/htdocs/wordpress/wp-includes/plugin.php(205): WP_Hook->apply_filters(Object(WP_Error), Array)
+#2 /Applications/MAMP/htdocs/wordpress/wp-includes/rest-api/class-wp-rest-server.php(1255): apply_filters('rest_request_af...', Object(WP_Error), Array, Object(WP_REST_Request))
+#3 /Applications/MAMP/htdocs/wordpress/wp-includes/rest-api/class-wp-rest-server.php(1063): WP_REST_Server->respond_to_request(Object(WP_REST_Request), '/elementor/v1/g...', Array, Object(WP_Error))
+#4 /Applications/MAMP/htdocs/wordpress/wp-includes/rest-api/class-wp-rest-server.php(439): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#5 /Applications/MAMP/htd in /Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/inc/compatibility/class-astra-elementor.php on line 363
+

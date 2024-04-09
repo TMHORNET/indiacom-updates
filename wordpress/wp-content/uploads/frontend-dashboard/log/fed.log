@@ -1,0 +1,19 @@
+ 
+ 
+ ==================11/03/2024 05:04:18 (DEBUG) START================== 
+ 
+Array
+(
+    [menu_slug] => users
+    [menu] => Users
+    [menu_image_id] => fas fa-male
+    [show_user_profile] => Enable
+    [menu_order] => 2
+    [user_role] => a:1:{i:0;s:13:"administrator";}
+    [extended] => 
+)
+ 
+ 
+ ==================11/03/2024 05:04:18 (DEBUG) END================== 
+ 
+ 

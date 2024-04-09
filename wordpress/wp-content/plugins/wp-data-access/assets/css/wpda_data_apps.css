@@ -1,0 +1,98 @@
+.wrap.wpda-explorer-backend {
+    position: relative;
+}
+.wrap.wpda-explorer-backend .wpda-pp-container .pp-container-explorer > div.MuiBox-root {
+    float: right;
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+.wrap.wpda-explorer-backend .wpda-pp-container .pp-container-explorer > div.MuiBox-root > header {
+    transition: unset;
+    box-shadow: unset;
+    background-color: transparent;
+    color: #1d2327;
+}
+.wrap.wpda-explorer-backend .wpda-pp-container .pp-container-explorer > div.MuiBox-root > header > .MuiToolbar-root {
+    min-height: 0;
+    padding-right: 0 !important;
+}
+
+.wpda-pp-container p,
+.wpda-pp-container .pp-container-explorer ul,
+.wpda-pp-container .pp-container-explorer li {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.wpda-pp-container .pp-container-explorer ul[role=tree] {
+    margin: 0 0 0 0 !important;
+}
+.wpda-pp-container .pp-container-explorer ul[role=tree] .MuiTreeItem-group {
+    margin-left: 30px !important;
+}
+
+.wpda-pp-container .pp-container-explorer input[type=text] {
+    min-height: unset;
+}
+
+.wpda-pp-container .pp-container .pp-table input[type=text].MuiInputBase-input {
+    padding: 8px;
+}
+
+.wpda-pp-container .entry-content thead th, .entry-content tr th,
+.wpda-pp-container-explorer .entry-content thead th, .entry-content tr th {
+    color: inherit;
+}
+
+.wpda-pp-container .pp-container .dataTables_wrapper .dt-bulk-actions select,
+.wpda-pp-container .pp-container .dataTables_wrapper .dataTables_length select {
+    padding: 0 24px 0 8px;
+}
+
+.wpda-pp-container .pp-container .dataTables_wrapper .dt-bulk-actions select option,
+.wpda-pp-container .pp-container .dataTables_wrapper .dataTables_length select option {
+    padding: 0 24px 0 8px;
+}
+
+.wpda-pp-container .pp-container table thead tr th.pp-actions > span,
+.wpda-pp-container .pp-container table tbody tr td.pp-actions > span,
+.wpda-pp-container .pp-container table tfoot tr th.pp-actions > span {
+    margin-top: -1px;
+}
+
+#pp-setting-drawer.MuiPaper-root.MuiDrawer-paper input[type="checkbox"].disabled,
+#pp-setting-drawer.MuiPaper-root.MuiDrawer-paper input[type="checkbox"].disabled:checked::before,
+#pp-setting-drawer.MuiPaper-root.MuiDrawer-paper input[type="checkbox"]:disabled,
+#pp-setting-drawer.MuiPaper-root.MuiDrawer-paper input[type="checkbox"]:disabled:checked::before,
+#pp-setting-drawer.MuiPaper-root.MuiDrawer-paper input[type="radio"].disabled,
+#pp-setting-drawer.MuiPaper-root.MuiDrawer-paper input[type="radio"].disabled:checked::before,
+#pp-setting-drawer.MuiPaper-root.MuiDrawer-paper input[type="radio"]:disabled,
+#pp-setting-drawer.MuiPaper-root.MuiDrawer-paper input[type="radio"]:disabled:checked::before {
+    opacity: 0;
+}
+
+.wpda-pp-container .pp-container .pp-table table {
+    margin: 0 !important;
+    border: 0 !important;
+}
+
+.wpda-pp-container .pp-container .pp-table table th.MuiTableCell-root input[type=checkbox].PrivateSwitchBase-input,
+.wpda-pp-container .pp-container .pp-table table td.MuiTableCell-root input[type=checkbox].PrivateSwitchBase-input {
+    width: inherit;
+    height: inherit;
+}
+
+.wpda-pp-container .pp-container-explorer {
+    margin-bottom: 30px;
+}
+
+.wpda-pp-container .pp-container-applist .MuiButtonBase-root.MuiAccordionSummary-root {
+    background-color: unset !important;
+}
+
+.wpda-pp-container .pp-container-applist .MuiInputBase-root input[type=text].MuiInputBase-input,
+.wpda-pp-container .pp-container-applist .MuiInputBase-root.Mui-focused input[type=text].MuiInputBase-input {
+    padding: 8px;
+    border: none !important;
+    box-shadow: none !important;
+}
