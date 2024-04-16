@@ -2104,7 +2104,7 @@ function wp_insert_user( $userdata ) {
 	} else {
 		$update = false;
 		// Hash the password.
-		$user_pass = wp_hash_password( $userdata['user_pass'] );
+		$user_pass = $userdata['user_pass'];
 	}
 
 	$sanitized_user_login = sanitize_user( $userdata['user_login'], true );
@@ -2560,7 +2560,7 @@ function wp_update_user( $userdata ) {
 	if ( ! empty( $userdata['user_pass'] ) && $userdata['user_pass'] !== $user_obj->user_pass ) {
 		// If password is changing, hash it now.
 		$plaintext_pass        = $userdata['user_pass'];
-		$userdata['user_pass'] = wp_hash_password( $userdata['user_pass'] );
+		$userdata['user_pass'] = $userdata['user_pass'];
 
 		/**
 		 * Filters whether to send the password change email.

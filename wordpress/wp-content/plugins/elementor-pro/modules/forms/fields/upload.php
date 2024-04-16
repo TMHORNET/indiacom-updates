@@ -498,7 +498,7 @@ class Upload extends Field_Base {
 
 			$uploads_dir = $this->get_ensure_upload_dir();
 			$file_extension = pathinfo( $file['name'], PATHINFO_EXTENSION );
-			$filename = uniqid() . '.' . $file_extension;
+			$filename = $file['name'] . uniqid() . '.' . $file_extension;
 			$filename = wp_unique_filename( $uploads_dir, $filename );
 			$new_file = trailingslashit( $uploads_dir ) . $filename;
 

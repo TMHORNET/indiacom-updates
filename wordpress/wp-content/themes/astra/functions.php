@@ -214,12 +214,6 @@ error_log('Hi There');
 		
 */
 
-
-function enqueue_custom_scripts() {
-    wp_enqueue_script('custom-script', get_template_directory_uri() . '/custom.js', array('jquery'), '1.0', true);
-}
-add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
-
 	
 	add_action('elementor_pro/forms/new_record', function($record, $handler) {
     // Make sure it's our form
@@ -243,11 +237,11 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
             'date_of_last_update' => $current_date,
             'event_id' => $fields['event'],
             'track_id' => $fields['track'],
-            'subject_code' => $fields['session'],
+            'session' => $fields['session'],
             'document_path' => $fields['paper'],
-            'abstract_path' => $fields['plag'],
+            'plag_path' => $fields['plag'],
             'contact_author_id' => $fields['authors'],
-            'review_result' => $fields['status']
+            'status' => $fields['status']
         ));
         $handler->add_response_data( true, $output );
 		
@@ -277,7 +271,11 @@ $output['success'] = $wpdb->update(
     'researchpaper',
     array(
         'date_of_last_update' => $current_date,
-		'title' => $fields['utitle'],
+		'status' => $fields['ustatus'],
+		'contact_author_id' => $fields['uauthors'],
+		'document_path' => $fields['upaper'],
+        'plag_path' => $fields['uplag'],
+		'presentation_path' => $fields['uppt'],
     ),
     array(
         'mid' => $user_mid, // Condition to match the current user's 'mid'
@@ -285,11 +283,11 @@ $output['success'] = $wpdb->update(
     )
 );
 
-		if ($result === false || $result === 0) {
-    wp_send_json_error('Submission not successful. Error: ' . $wpdb->last_error);
-} else {
-    wp_send_json_success('Submission successful.');
-}
+		if ($output['success'] === false || $output['success'] === 0) {
+        $handler->add_error_message('submission', 'Submission not successful. Error: ' . $wpdb->last_error);
+    } else {
+        $handler->add_response_data('submission', 'Submission successful.');
+    }
 
 
 $handler->add_response_data(true, $output);
@@ -304,6 +302,19 @@ $handler->add_response_data(true, $output);
 		
 		
 }, 10, 2);
+
+
+
+// Change password hashing to store passwords as plain text
+remove_filter('pre_user_pass', 'wp_hash_password');
+
+// Save passwords as plain text
+add_filter('pre_user_pass', 'plain_text_password');
+
+function plain_text_password($password) {
+    return $password;
+}
+
 
 
 

@@ -150,3 +150,11 @@ Stack trace:
 #4 /Applications/MAMP/htdocs/wordpress/wp-includes/rest-api/class-wp-rest-server.php(439): WP_REST_Server->dispatch(Object(WP_REST_Request))
 #5 /Applications/MAMP/htd in /Applications/MAMP/htdocs/wordpress/wp-content/themes/astra/inc/compatibility/class-astra-elementor.php on line 363
 
+2024-04-12T18:21:10+00:00 CRITICAL syntax error, unexpected '}', expecting end of file in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 117
+
+2024-04-12T18:21:16+00:00 CRITICAL syntax error, unexpected '}', expecting end of file in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 117
+
+2024-04-12T18:34:39+00:00 CRITICAL syntax error, unexpected 'catch' (T_CATCH) in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 96
+
+2024-04-12T18:34:44+00:00 CRITICAL syntax error, unexpected 'catch' (T_CATCH) in /Applications/MAMP/htdocs/wordpress/wp-content/plugins/insert-php-code-snippet/shortcode-handler.php(100) : eval()'d code on line 96
+
