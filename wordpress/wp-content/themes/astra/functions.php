@@ -221,29 +221,38 @@ error_log('Hi There');
     if ($form_name == 'submpaper') {
 		
 		
-		$raw_fields = $record->get( 'fields' );
-        $fields = [];
-        foreach( $raw_fields as $id => $field ) {
-            $fields[$id] = $field['value'];
-        }
-        $current_date = date('d-m-Y H:i:s');
-        global $wpdb;
-        $output['success'] = $wpdb->insert('researchpaper', array(
-            'name' => $fields['name'],
-            'mid' => $fields['mid'],
-            'email' => $fields['email'],
-            'title' => $fields['title'],
-            'date_of_submission' => $current_date,
-            'date_of_last_update' => $current_date,
-            'event_id' => $fields['event'],
-            'track_id' => $fields['track'],
-            'session' => $fields['session'],
-            'document_path' => $fields['paper'],
-            'plag_path' => $fields['plag'],
-            'contact_author_id' => $fields['authors'],
-            'status' => $fields['status']
-        ));
-        $handler->add_response_data( true, $output );
+		$raw_fields = $record->get('fields');
+$fields = [];
+foreach ($raw_fields as $id => $field) {
+    $fields[$id] = $field['value'];
+}
+$current_date = date('d-m-Y H:i:s');
+global $wpdb;
+$output['success'] = $wpdb->insert('researchpaper', array(
+    'name' => $fields['name'],
+    'mid' => $fields['mid'],
+    'email' => $fields['email'],
+    'title' => $fields['title'],
+    'date_of_submission' => $current_date,
+    'date_of_last_update' => $current_date,
+    'event_id' => $fields['event'],
+    'track_id' => $fields['track'],
+    'session' => $fields['session'],
+    'document_path' => $fields['paper'],
+    'plag_path' => $fields['plag'],
+    'status' => $fields['status']
+));
+		
+		if ($output['success'] === false || $output['success'] === 0) {
+        $handler->add_error_message('submission', 'Submission not successful. Error: ' . $wpdb->last_error);
+    } else {
+        $handler->add_response_data('submission', 'Submission successful.');
+    }
+		
+
+		
+$handler->add_response_data(true, $output);
+
 		
         
     }
@@ -304,16 +313,6 @@ $handler->add_response_data(true, $output);
 }, 10, 2);
 
 
-
-// Change password hashing to store passwords as plain text
-remove_filter('pre_user_pass', 'wp_hash_password');
-
-// Save passwords as plain text
-add_filter('pre_user_pass', 'plain_text_password');
-
-function plain_text_password($password) {
-    return $password;
-}
 
 
 

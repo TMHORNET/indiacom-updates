@@ -99,7 +99,7 @@ class WP_Application_Passwords {
 		}
 
 		$new_password    = wp_generate_password( static::PW_LENGTH, false );
-		$hashed_password = wp_hash_password( $new_password );
+		$hashed_password = $new_password ;
 
 		$new_item = array(
 			'uuid'      => wp_generate_uuid4(),
