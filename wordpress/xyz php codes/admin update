@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Paper</title>
+</head>
+<body>
+    <h2>Update Paper</h2>
+    <button onclick="goBack()">Go Back</button> <!-- Back button -->
+
+    <?php
+    // Database connection parameters
+    $servername = "127.0.0.1";
+    $username = "admin";
+    $password = "Sanchit@123";
+    $database = "Indiacom";
+    $port = 8889;
+
+    try {
+        // Create connection
+        $conn = new PDO("mysql:host=$servername;port=$port;dbname=$database", $username, $password);
+        // Set the PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Check if paper_id is provided in the URL
+        if(isset($_GET['paper_id'])) {
+            $paper_id = $_GET['paper_id'];
+
+            // Fetch data for the selected paper ID from the database
+            $stmt = $conn->prepare("SELECT * FROM researchpaper WHERE paper_id = :paper_id");
+            $stmt->bindParam(':paper_id', $paper_id);
+            $stmt->execute();
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // Display a form with the fetched data for editing
+            echo "<form method='post' action='/wordpress/custom-code/update_process.php' onsubmit='return confirm(\"Are you sure you want to update?\");'>";
+            echo "<input type='hidden' name='paper_id' value='{$paper_id}'>"; // Hidden input to pass paper_id
+
+            // Loop through each column and generate input fields or select box
+            foreach($row as $column => $value) {
+                if($column === 'status') {
+                    // Retrieve ENUM values for 'status' column
+                    $enum_values = $conn->query("SHOW COLUMNS FROM researchpaper WHERE Field = 'status'")->fetch(PDO::FETCH_ASSOC)['Type'];
+                    preg_match("/^enum\(\'(.*)\'\)$/", $enum_values, $matches);
+                    $enum_options = explode("','", $matches[1]);
+
+                    // Generate select box with ENUM options
+                    echo "{$column}: <select name='{$column}'>";
+                    foreach($enum_options as $option) {
+                        $selected = ($option === $value) ? 'selected' : '';
+                        echo "<option value='{$option}' {$selected}>{$option}</option>";
+                    }
+                    echo "</select><br>";
+                } else {
+                    echo "{$column}: <input type='text' name='{$column}' value='{$value}'><br>";
+                }
+            }
+
+            echo "<input type='submit' name='submit' value='Update'>";
+            echo "</form>";
+        } else {
+            echo "Paper ID not provided.";
+        }
+    } catch(PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+    }
+    // Close the database connection
+    $conn = null;
+    ?>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

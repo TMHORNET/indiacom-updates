@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Co-Authors</title>
+    <script>
+        var selectedAuthors = [];
+
+        function addUser(userId, userName) {
+            if (!selectedAuthors.includes(userId)) {
+                selectedAuthors.push(userId);
+                var userList = document.getElementById("selected_users");
+                var existingUsers = userList.value;
+                if (existingUsers === "") {
+                    userList.value = userId;
+                } else {
+                    userList.value = existingUsers + "," + userId;
+                }
+                var div = document.createElement("div");
+                div.innerHTML = userName + " <button type='button' onclick='deleteUser(" + userId + ")'>Remove</button>";
+                div.id = userId + "_div";
+                document.getElementById("user_list").appendChild(div);
+            } else {
+                alert("This co-author is already selected.");
+            }
+        }
+
+        function deleteUser(userId) {
+            var userList = document.getElementById("selected_users");
+            var usersArray = userList.value.split(",");
+            var index = usersArray.indexOf(userId.toString());
+            if (index !== -1) {
+                usersArray.splice(index, 1);
+                userList.value = usersArray.join(",");
+            }
+            var div = document.getElementById(userId + "_div");
+            div.parentNode.removeChild(div);
+
+            var index = selectedAuthors.indexOf(userId);
+            if (index !== -1) {
+                selectedAuthors.splice(index, 1);
+            }
+        }
+
+        function searchUser() {
+            var input, filter, ul, li, span, i, txtValue;
+            input = document.getElementById('search_user');
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("user_results");
+            ul.innerHTML = "";
+            if (filter.trim() !== "") {
+                <?php
+                $servername = "127.0.0.1";
+                $username = "admin";
+                $password = "Sanchit@123";
+                $database = "Indiacom";
+                $port = 8889; 
+
+                // Create connection
+                $conn = new mysqli($servername, $username, $password, $database, $port);
+
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                $current_user_id = get_current_user_id();
+
+                $sql = "SELECT ID, display_name FROM wp_users WHERE ID != $current_user_id";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "if ('" . $row["ID"] . "'.toUpperCase().indexOf(filter) > -1 || '" . $row["display_name"] . "'.toUpperCase().indexOf(filter) > -1) {";
+                        echo "var li = document.createElement('li');";
+                        echo "span = document.createElement('span');";
+                        echo "span.textContent = '" . $row["display_name"] . "';";
+                        echo "span.setAttribute('onclick', 'addUser(" . $row["ID"] . ", \"" . $row["display_name"] . "\")');";
+                        echo "li.appendChild(span);";
+                        echo "ul.appendChild(li);";
+                        echo "}";
+                    }
+                }
+                $conn->close();
+                ?>
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Add Co-Authors</h2>
+    <form action="/wordpress/custom-code/coauthorprocess.php" method="post">
+        <label for="paper_id">Select Paper ID:</label>
+        <select name="paper_id" id="paper_id">
+            <?php
+            $servername = "127.0.0.1";
+            $username = "admin";
+            $password = "Sanchit@123";
+            $database = "Indiacom";
+            $port = 8889; 
+
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $database, $port);
+
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            $current_user_id = get_current_user_id();
+
+            $sql = "SELECT paper_id, title FROM researchpaper WHERE mid = $current_user_id";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<option value='" . $row["paper_id"] . "'>" . $row["paper_id"] . " - " . $row["title"] . "</option>";
+                }
+            }
+            $conn->close();
+            ?>
+        </select>
+        <br><br>
+        <label for="search_user">Search User:</label>
+        <input type="text" id="search_user" name="search_user" oninput="searchUser()">
+        <div id="user_results"></div>
+        <br>
+        <label for="selected_users">Selected Co-Authors:</label>
+        <input type="text" id="selected_users" name="selected_users" readonly>
+        <div id="user_list"></div>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

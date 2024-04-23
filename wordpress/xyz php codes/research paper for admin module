@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin View</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow-x: auto; /* Enable horizontal scrolling */
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 6px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .scrollable-table {
+            overflow-y: scroll; /* Enable vertical scrolling */
+            max-height: 500px; /* Set max height as per your requirement */
+        }
+        #searchContainer {
+            width: 25%;
+            float: left;
+            margin-right: 10px;
+        }
+        #exportButton {
+            margin-top: 5px;
+            padding: 5px 10px; /* Adjust padding for smaller button */
+            font-size: 14px; /* Adjust font size for smaller button */
+            float: left; /* Align button next to the search box */
+        }
+    </style>
+</head>
+<body>
+    <h2>Admin View</h2>
+    <!-- Search bar -->
+    <div id="searchContainer">
+        <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search for anything...">
+    </div>
+    <button id="exportButton" onclick="exportToCSV()">Export to CSV</button>
+    <div style="clear:both;"></div>
+    <div class="scrollable-table"> <!-- Add a container div for scrolling -->
+        <table id="paperTable">
+            <thead>
+                <tr>
+                    <th>Paper ID</th>
+                    <th>Name</th>
+                    <th>MID</th>
+                    <th>Email</th>
+                    <th>Title</th>
+                    <th>Date of Submission</th>
+                    <th>Date of Last Update</th>
+                    <th>Event ID</th>
+                    <th>Track ID</th>
+                    <th>Session</th>
+                    <th>Document Path</th>
+                    <th>Plagiarism Path</th>
+                    <th>Presentation Path</th>
+                    <th>Contact Author ID</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // Database connection parameters
+                $servername = "127.0.0.1";
+                $username = "admin";
+                $password = "Sanchit@123";
+                $database = "Indiacom";
+                $port = 8889;
+
+                try {
+                    // Create connection
+                    $conn = new PDO("mysql:host=$servername;port=$port;dbname=$database", $username, $password);
+                    // Set the PDO error mode to exception
+                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                    // Prepare and execute the SQL statement
+                    $stmt = $conn->prepare("SELECT * FROM researchpaper");
+                    $stmt->execute();
+
+                    // Fetch all rows as associative array
+                    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                    foreach ($rows as $row) {
+                        echo "<tr>";
+                        // Echo all columns
+                        foreach ($row as $key => $value) {
+                            // Display download link for presentation path
+                            if ($key === 'presentation_path' && !empty($value)) {
+                                echo "<td><a href='{$value}' download>Presentation</a></td>";
+                            }
+                            // Display download link for plagiarism path
+                            elseif ($key === 'plag_path' && !empty($value)) {
+                                echo "<td><a href='{$value}' download>Plagiarism</a></td>";
+                            }
+                            // Display download link for document path
+                            elseif ($key === 'document_path' && !empty($value)) {
+                                echo "<td><a href='{$value}' download>Document</a></td>";
+                            }
+                            // Otherwise, just display the value
+                            else {
+                                echo "<td>{$value}</td>";
+                            }
+                        }
+                        // Add update button
+                        echo "<td><a href='adminupdate/?paper_id={$row['paper_id']}'>Update</a></td>"; 
+                        echo "</tr>";
+                    }
+                } catch(PDOException $e) {
+                    echo "Connection failed: " . $e->getMessage();
+                }
+                // Close the database connection
+                $conn = null;
+                ?>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function searchTable() {
+            var input, filter, table, tr, td, i, j, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("paperTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                var found = false;
+                for (j = 0; j < tr[i].cells.length; j++) {
+                    td = tr[i].cells[j];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            found = true;
+                            break;
+                        }
+                    }
+                }
+                if (found) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+
+        function exportToCSV() {
+            var csv = [];
+            var rows = document.querySelectorAll("table tr");
+
+            for (var i = 0; i < rows.length; i++) {
+                var row = [], cols = rows[i].querySelectorAll("td, th");
+
+                for (var j = 0; j < cols.length; j++) {
+                    row.push(cols[j].innerText);
+                }
+                csv.push(row.join(","));
+            }
+
+            // Download CSV file
+            var csvContent = "data:text/csv;charset=utf-8," + csv.join("\n");
+            var encodedUri = encodeURI(csvContent);
+            var link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "paper_data.csv");
+            document.body.appendChild(link);
+            link.click();
+        }
+    </script>
+</body>
+</html>

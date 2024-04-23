@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Papers</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Research Papers</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Paper ID</th>
+                <th>Name</th>
+                <th>Title</th>
+                <th>Document</th>
+                <th>Plagiarism</th>
+                <th>PPT</th>
+                <th>Co-Authors</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+           <?php
+$servername = "127.0.0.1";
+$username = "admin";
+$password = "Sanchit@123";
+$database = "Indiacom";
+$port = 8889;
+
+// Get current user's ID
+$currentUserID = get_current_user_id();
+
+try {
+    $conn = new PDO("mysql:host=$servername;port=$port;dbname=$database", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $stmt = $conn->prepare("SELECT * FROM researchpaper WHERE mid = :mid");
+    $stmt->bindParam(':mid', $currentUserID);
+    $stmt->execute();
+
+    // Fetch all rows as associative array
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($rows as $row) {
+        echo "<tr>";
+        // Echo only the desired columns
+        echo "<td>{$row['paper_id']}</td>";
+        echo "<td>{$row['name']}</td>";
+        echo "<td>{$row['title']}</td>";
+        
+        // Document path download link
+        echo "<td>";
+        if (!empty($row['document_path'])) {
+            echo "<a href='{$row['document_path']}' download>Document</a>";
+        }
+        echo "</td>";
+
+        // Plagiarism path download link
+        echo "<td>";
+        if (!empty($row['plag_path'])) {
+            echo "<a href='{$row['plag_path']}' download>Plagiarism</a>";
+        }
+        echo "</td>";
+
+        // Presentation path download link
+        echo "<td>";
+        if (!empty($row['presentation_path'])) {
+            echo "<a href='{$row['presentation_path']}' download>PPT</a>";
+        }
+        echo "</td>";
+
+        echo "<td>{$row['contact_author_id']}</td>";
+        echo "<td>{$row['status']}</td>";
+        echo "</tr>";
+    }
+} catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
+$conn = null;
+?>
+
+
+
+        </tbody>
+    </table>
+</body>
+</html>
