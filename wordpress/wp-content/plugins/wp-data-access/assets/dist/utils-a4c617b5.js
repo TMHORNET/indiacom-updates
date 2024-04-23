@@ -1,0 +1,1 @@
+import{r as e}from"./main.js";const a=e.createContext(void 0),l=a;function r(t){return t!=null&&!(Array.isArray(t)&&t.length===0)}function s(t,n=!1){return t&&(r(t.value)&&t.value!==""||n&&r(t.defaultValue)&&t.defaultValue!=="")}function u(t){return t.startAdornment}export{l as F,u as a,s as i};
